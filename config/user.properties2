@@ -1,0 +1,15 @@
+# mos
+access_key = aa
+secret_key = aa
+endpoint  = http://10.10.1.139:8080
+bucket_name = test5
+
+
+# mariadb
+db_host = 10.10.7.151
+db_port = 3306
+db_user = admin
+db_passwd = sandstone
+db_name = test
+db_table = filenet_data_trans
+
