@@ -1,0 +1,24 @@
+[2018-12-05 20:32:03 ] [INFO] aws_api.ObjectOperation.getS3Client(ObjectOperation.java:38) : Create s3 connection successfully!
+[2018-12-05 20:32:05 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: GTMC分布式存储使用课题及对策说明_20180408-reviewed-by-masi.xlsx
+[2018-12-05 20:32:05 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 分布式对象存储迁移工具介绍.docx
+[2018-12-05 20:32:05 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 查询文件名带引号的报错.png
+[2018-12-05 20:32:05 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 问题记录.txt
+[2018-12-05 20:32:05 ] [INFO] aws_api.ObjectOperation.listObjects(ObjectOperation.java:50) : listObjects successfully!
+[2018-12-05 20:34:00 ] [INFO] aws_api.ObjectOperation.getS3Client(ObjectOperation.java:38) : Create s3 connection successfully!
+[2018-12-05 20:34:03 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: GTMC分布式存储使用课题及对策说明_20180408-reviewed-by-masi.xlsx
+[2018-12-05 20:34:03 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 分布式对象存储迁移工具介绍.docx
+[2018-12-05 20:34:03 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 查询文件名带引号的报错.png
+[2018-12-05 20:34:03 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 问题记录.txt
+[2018-12-05 20:34:03 ] [INFO] aws_api.ObjectOperation.listObjects(ObjectOperation.java:50) : listObjects successfully!
+[2018-12-05 20:34:20 ] [INFO] aws_api.ObjectOperation.getS3Client(ObjectOperation.java:38) : Create s3 connection successfully!
+[2018-12-05 20:34:27 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: GTMC分布式存储使用课题及对策说明_20180408-reviewed-by-masi.xlsx
+[2018-12-05 20:34:27 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 分布式对象存储迁移工具介绍.docx
+[2018-12-05 20:34:27 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 查询文件名带引号的报错.png
+[2018-12-05 20:34:27 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 问题记录.txt
+[2018-12-05 20:34:27 ] [INFO] aws_api.ObjectOperation.listObjects(ObjectOperation.java:50) : listObjects successfully!
+[2018-12-05 21:16:51 ] [INFO] aws_api.ObjectOperation.getS3Client(ObjectOperation.java:38) : Create s3 connection successfully!
+[2018-12-05 21:16:57 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: GTMC分布式存储使用课题及对策说明_20180408-reviewed-by-masi.xlsx
+[2018-12-05 21:16:57 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 分布式对象存储迁移工具介绍.docx
+[2018-12-05 21:16:57 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 查询文件名带引号的报错.png
+[2018-12-05 21:16:57 ] [INFO] aws_api.ObjectOperation.lambda$0(ObjectOperation.java:49) : object: 问题记录.txt
+[2018-12-05 21:16:57 ] [INFO] aws_api.ObjectOperation.listObjects(ObjectOperation.java:50) : listObjects successfully!

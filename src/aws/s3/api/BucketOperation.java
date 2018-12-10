@@ -74,9 +74,9 @@ public class BucketOperation extends BaseOperation {
 		// TODO Auto-generated method stub
 		String bucket_name = "wakesy2";
 		BucketOperation bucket_operation = new BucketOperation();
-		listBuckets();
+//		listBuckets();
 //		createBucket(bucket_name);
-//		deleteBucket(bucket_name);
+		deleteBucket(bucket_name);
 //		getBucketPolicy(bucket_name);
 	}
 

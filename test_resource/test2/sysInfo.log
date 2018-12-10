@@ -1,0 +1,12 @@
+2018-12-05 14:12:39This is a info log!
+  temp_pkg.Test.configureLog(Test.java:16)
+2018-12-05 14:12:39This is a warn log!
+  temp_pkg.Test.configureLog(Test.java:17)
+2018-12-05 14:12:39This is a error log!
+  temp_pkg.Test.configureLog(Test.java:18)
+2018-12-05 14:13:15This is a info log!
+  temp_pkg.Test.configureLog(Test.java:16)
+2018-12-05 14:13:15This is a warn log!
+  temp_pkg.Test.configureLog(Test.java:17)
+2018-12-05 14:13:15This is a error log!
+  temp_pkg.Test.configureLog(Test.java:18)

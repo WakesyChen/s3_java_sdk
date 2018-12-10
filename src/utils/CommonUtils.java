@@ -7,13 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.apache.log4j.PropertyConfigurator;
-
 import com.amazonaws.AmazonServiceException;
+
+
 public class CommonUtils {
 	
-	public final static String file_path = System.getProperty("user.dir") + File.separator+ "test_resource";
 	
 	/*用于将数据流，写到本地文件*/
 	public static void saveFileByFIS(InputStream is, String target_file) {

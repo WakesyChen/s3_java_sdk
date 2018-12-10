@@ -3,11 +3,11 @@ package aws.s3.api;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.DeleteObjectsRequest;
@@ -62,8 +62,7 @@ public class ObjectOperation extends BaseOperation {
 	
 	
 	/*递归上传某个目录的文件*/
-	
-	public static Boolean interateFolder(String start_path) {
+	public static Boolean uploadDir(String start_path) {
 		File current_file = new File(start_path);
 		if( ! current_file.isDirectory() ) {  // 首先校验是否是目录
 			System.out.println("filepath is not a  directory!");
@@ -79,7 +78,7 @@ public class ObjectOperation extends BaseOperation {
 				}
 				putObject(bucket, object_key, current_path);  
 			}else { // 目录，则递归
-				interateFolder(current_path);
+				uploadDir(current_path);
 			}
 		}
 		return true;			
@@ -143,20 +142,28 @@ public class ObjectOperation extends BaseOperation {
 	    }
 	
 	
-	/* 设置标签*/
+	/* 设置标签--上传后---不支持*/
 	public static void setTags(String bucket_name, String object_key, List<Tag> new_tags) {
 		try {
 		   SetObjectTaggingRequest sotr = new SetObjectTaggingRequest(bucket_name, object_key, null);
-		   // tag不能增量添加，只能每次拿到之前的，然后全量put
+		   // todo: tag不能增量添加，只能每次拿到之前的，然后全量put
 		   List<Tag> old_tags = getTags(bucket_name, object_key);
-		   for(Tag old_tag : old_tags) {
-			   if( ! new_tags.contains(old_tag) ){
-				   new_tags.add(old_tag);
-			   }
-		   	}
 		   new_tags.forEach(tag -> log.info("set tag " + tag.getKey() + " : " + tag.getValue()));
 		   sotr.setTagging(new ObjectTagging(new_tags));
 		   s3client.setObjectTagging(sotr);
+		   log.info("set new tag successfully!");
+			} catch (AmazonServiceException e) {
+        	 e.printStackTrace();
+           }
+	}
+	
+	
+	/* 设置标签--上传时*/
+	public static void setTagsWhenUpload(String bucket_name, String object_key, String file_path,  List<Tag> new_tags) {
+		try {
+			PutObjectRequest por = new PutObjectRequest(bucket_name, object_key,  new File(file_path));
+			por.setTagging(new ObjectTagging(new_tags));
+			s3client.putObject(por);
 		   log.info("set new tag successfully!");
 			} catch (AmazonServiceException e) {
         	 e.printStackTrace();
@@ -171,7 +178,7 @@ public class ObjectOperation extends BaseOperation {
 		   GetObjectTaggingRequest gotr = new GetObjectTaggingRequest(bucket_name, object_key);
 		   GetObjectTaggingResult result =  s3client.getObjectTagging(gotr);
 		   tags =  result.getTagSet();
-		   tags.forEach(tag -> log.info("get tag " +tag.getKey()+ " : " + tag.getValue()));
+		   tags.forEach(tag -> log.info("get tag> " +tag.getKey()+ " : " + tag.getValue()));
         } catch (AmazonServiceException e) {
         	 e.printStackTrace();
            }
@@ -180,11 +187,14 @@ public class ObjectOperation extends BaseOperation {
 	
 	
 	/*设置元数据*/
-	public static void setMetaData(String bucket_name, String object_key, String file_path, ObjectMetadata metadata) {
+	public static void setMetaDataWhenUpload(String bucket_name, String object_key, String file_path, Map<String, String> data_map) {
 		try {
+			ObjectMetadata metadata =new ObjectMetadata();
 			// 无法单独设置对象元数据，只能在上传的时候设置
-			PutObjectRequest por = new PutObjectRequest(bucket_name, object_key,  new File(file_path));
-			por.setMetadata(metadata);
+			for(String key : data_map.keySet()) {
+				metadata.addUserMetadata(key,  data_map.get(key));
+			}
+			PutObjectRequest por = new PutObjectRequest(bucket_name, object_key,  new File(file_path)).withMetadata(metadata);
 			s3client.putObject(por);
 			log.info("set metadata successfully");
 		}catch(AmazonServiceException e) {
@@ -220,12 +230,13 @@ public class ObjectOperation extends BaseOperation {
 		String object_key2 = "test_resource/中文.log2"; 
 		String target_file = System.getProperty("user.dir") + "\\test_resource\\common.log_temp";
 		String object_keys[] = {"test_resource/common.log", "test_resource/common.log2"};
-		ObjectMetadata metadata =new ObjectMetadata();
-		metadata.addUserMetadata("name", "wakesy");
+		Map<String, String> data_map = new HashMap<>();
 		List<Tag> new_tags = new ArrayList<>();
 		for(int i =0; i <2; i ++) {
 			new_tags.add(new Tag("name"+i, "wakesy"+i));
+			data_map.put("name"+i, "wakesy"+i);
 		}
+		
 		
 		ObjectOperation object_operation =new ObjectOperation();
 //		listObjects(bucket);
@@ -234,11 +245,12 @@ public class ObjectOperation extends BaseOperation {
 //		getObject(bucket, object_key, target_file);
 //		deleteObject(bucket, object_key);
 //		deleteObjects(bucket, object_keys);
-//		setTags(bucket, object_key, new_tags);    // failed, Service: Amazon S3; Status Code: 501; Error Code: NotImplemented;
+//		setTags(bucket, object_key, new_tags);  
+//		setTagsWhenUpload(bucket, object_key, local_file, new_tags);
 //		getTags(bucket, object_key);
-//		setMetaData(bucket, object_key, local_file, metadata);
+//		setMetaDataWhenUpload(bucket, object_key, local_file, data_map);
 //		getMetaData(bucket, object_key, "name");
-//		interateFolder(upload_dir);
+//		uploadDir(upload_dir);
 	}
 
 }
