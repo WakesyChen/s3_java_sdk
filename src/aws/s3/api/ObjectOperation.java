@@ -24,7 +24,8 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.Tag;
-import utils.CommonUtils;
+
+import aws.s3.utils.CommonUtils;
 
 
 
@@ -142,7 +143,7 @@ public class ObjectOperation extends BaseOperation {
 	    }
 	
 	
-	/* 设置标签--上传后---不支持*/
+	/* 设置标签--上传后*/
 	public static void setTags(String bucket_name, String object_key, List<Tag> new_tags) {
 		try {
 		   SetObjectTaggingRequest sotr = new SetObjectTaggingRequest(bucket_name, object_key, null);
@@ -239,7 +240,7 @@ public class ObjectOperation extends BaseOperation {
 		
 		
 		ObjectOperation object_operation =new ObjectOperation();
-//		listObjects(bucket);
+		listObjects(bucket);
 //		putObject(bucket, object_key, local_file); 
 //		copyObject(bucket, "test_resource/common.log", "wakesy2", "test_resource/common.log");
 //		getObject(bucket, object_key, target_file);

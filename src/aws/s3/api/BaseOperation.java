@@ -9,8 +9,9 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import utils.CommonUtils;
-import utils.PropertyUtil;
+
+import aws.s3.utils.CommonUtils;
+import aws.s3.utils.PropertyUtil;
 
 
 public class BaseOperation {

@@ -72,12 +72,12 @@ public class BucketOperation extends BaseOperation {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String bucket_name = "wakesy2";
+		String bucket_name = "wakesy4";
 		BucketOperation bucket_operation = new BucketOperation();
-//		listBuckets();
-//		createBucket(bucket_name);
+		listBuckets();
+		createBucket(bucket_name);
 		deleteBucket(bucket_name);
-//		getBucketPolicy(bucket_name);
+		getBucketPolicy(bucket_name);
 	}
 
 }
