@@ -1,8 +1,10 @@
 package aws.s3.utils;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
@@ -17,13 +19,14 @@ public class PropertyUtil {
 	 
 	 public static String getProperty(String keyName) {
 		   	Properties properties = new Properties();
-		   	InputStreamReader inputStream;
+		   	InputStreamReader inputStreamReader;
 		   	String value = "";
 			try {
-				inputStream = new InputStreamReader(new FileInputStream(configPath), "utf-8");
+//				inputStreamReader = new InputStreamReader(new FileInputStream(configPath), "utf-8"); // jdk1.5b不能这样指定编码, 中文解析会乱码
+				InputStream inputStream = new FileInputStream(configPath); 
 				properties.load(inputStream);
 				value =  properties.getProperty(keyName, "");
-//				System.out.println(keyName + " : " + value);
+				System.out.println(keyName + " : " + value);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} catch (FileNotFoundException e) {
